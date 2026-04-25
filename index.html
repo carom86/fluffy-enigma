@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta Comercial — Dr. Eduardo Mendoza Ramírez</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  :root {
+    --primary: #5B4A8A;
+    --secondary: #E8A0BF;
+    --accent: #2EC4B6;
+    --dark: #2D3436;
+    --light: #F8F9FA;
+    --gold: #F4D35E;
+    --white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--dark);
+    line-height: 1.7;
+    font-size: 11pt;
+    background: var(--white);
+  }
+
+  @media print {
+    body { font-size: 10pt; }
+    .page-break { page-break-before: always; }
+    .no-print { display: none; }
+    @page { margin: 1.5cm 2cm; size: letter; }
+  }
+
+  /* ===== COVER PAGE ===== */
+  .cover {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, var(--primary) 0%, #3d2f6e 100%);
+    color: var(--white);
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: rgba(232,160,191,0.1);
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: -20%;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(46,196,182,0.08);
+  }
+
+  .cover-content { position: relative; z-index: 2; max-width: 700px; padding: 2rem; }
+  .cover-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    padding: 8px 24px;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .cover h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+
+  .cover h2 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--secondary);
+    margin-bottom: 2rem;
+  }
+
+  .cover-line {
+    width: 80px;
+    height: 3px;
+    background: var(--accent);
+    margin: 1.5rem auto;
+  }
+
+  .cover-details {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    margin-top: 2rem;
+  }
+
+  .cover-details strong { color: var(--white); }
+
+  .cover-for {
+    margin-top: 2.5rem;
+    padding: 1.5rem 2rem;
+    background: rgba(255,255,255,0.08);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .cover-for p { font-size: 0.9rem; color: rgba(255,255,255,0.8); }
+  .cover-for .name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-top: 0.3rem;
+  }
+
+  /* ===== GENERAL ===== */
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+
+  h1.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--primary);
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: var(--primary);
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  h3 {
+    font-size: 1.05rem;
+    color: var(--dark);
+    margin-top: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+  }
+
+  h4 { font-size: 0.95rem; color: #555; margin-top: 1rem; margin-bottom: 0.4rem; }
+
+  p { margin-bottom: 0.8rem; text-align: justify; }
+
+  strong { color: var(--primary); }
+
+  /* ===== TOC ===== */
+  .toc { page-break-after: always; }
+  .toc h1 { text-align: center; margin-bottom: 2rem; }
+  .toc-list { list-style: none; padding: 0; }
+  .toc-list li {
+    display: flex;
+    align-items: baseline;
+    padding: 0.6rem 0;
+    border-bottom: 1px dotted #ddd;
+    font-size: 1rem;
+  }
+  .toc-list li .num {
+    font-weight: 700;
+    color: var(--primary);
+    min-width: 40px;
+  }
+  .toc-list li .title { flex: 1; }
+  .toc-list li .page { color: var(--primary); font-weight: 600; }
+
+  /* ===== TABLES ===== */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0 1.5rem;
+    font-size: 0.88rem;
+  }
+
+  thead th {
+    background: var(--primary);
+    color: var(--white);
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  tbody td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: top;
+  }
+
+  tbody tr:nth-child(even) { background: #f8f9ff; }
+  tbody tr:hover { background: #eef0ff; }
+
+  /* ===== CARDS / BOXES ===== */
+  .highlight-box {
+    background: linear-gradient(135deg, #f8f4ff 0%, #fdf2f8 100%);
+    border-left: 4px solid var(--primary);
+    padding: 1.2rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1.2rem 0;
+  }
+
+  .accent-box {
+    background: linear-gradient(135deg, #e8faf8 0%, #f0fffe 100%);
+    border-left: 4px solid var(--accent);
+    padding: 1.2rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1.2rem 0;
+  }
+
+  .warning-box {
+    background: #fff9e6;
+    border-left: 4px solid var(--gold);
+    padding: 1rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1rem 0;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .stat-card {
+    background: var(--white);
+    border: 1px solid #e9ecef;
+    border-radius: 10px;
+    padding: 1.2rem;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(91,74,138,0.06);
+  }
+
+  .stat-card .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .stat-card .stat-label {
+    font-size: 0.78rem;
+    color: #666;
+    margin-top: 0.3rem;
+  }
+
+  /* ===== FLOW DIAGRAM (CSS) ===== */
+  .flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    flex-wrap: wrap;
+  }
+
+  .flow-step {
+    background: var(--primary);
+    color: var(--white);
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .flow-arrow { font-size: 1.2rem; color: var(--accent); font-weight: 700; }
+
+  /* ===== CODE BLOCKS ===== */
+  pre {
+    background: #1e1e2e;
+    color: #cdd6f4;
+    padding: 1.2rem;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin: 1rem 0;
+    white-space: pre-wrap;
+  }
+
+  /* ===== LISTS ===== */
+  ul, ol { margin-left: 1.5rem; margin-bottom: 1rem; }
+  li { margin-bottom: 0.3rem; }
+
+  .checklist { list-style: none; margin-left: 0; }
+  .checklist li::before { content: '✅ '; }
+  .checklist-red { list-style: none; margin-left: 0; }
+  .checklist-red li::before { content: '❌ '; }
+
+  /* ===== FODA GRID ===== */
+  .foda-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .foda-card {
+    padding: 1rem 1.2rem;
+    border-radius: 10px;
+    font-size: 0.88rem;
+  }
+
+  .foda-card h4 { margin-top: 0; font-size: 0.95rem; }
+  .foda-f { background: #e8f5e9; border: 1px solid #a5d6a7; }
+  .foda-o { background: #e3f2fd; border: 1px solid #90caf9; }
+  .foda-d { background: #fff3e0; border: 1px solid #ffcc80; }
+  .foda-a { background: #fce4ec; border: 1px solid #ef9a9a; }
+
+  .foda-card ul { margin-left: 1.2rem; margin-bottom: 0; }
+
+  /* ===== PILLAR BOXES ===== */
+  .pillar-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    margin: 1rem 0;
+  }
+
+  .pillar-card {
+    background: var(--light);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #e0dce8;
+  }
+
+  .pillar-card .pct {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .pillar-card .label { font-size: 0.82rem; font-weight: 600; margin-top: 0.2rem; }
+  .pillar-card .desc { font-size: 0.75rem; color: #666; margin-top: 0.3rem; }
+
+  /* ===== PRICING ===== */
+  .pricing-card {
+    border: 2px solid var(--primary);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    position: relative;
+  }
+
+  .pricing-card.featured {
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px rgba(46,196,182,0.15);
+  }
+
+  .pricing-card .badge {
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--accent);
+    color: var(--white);
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .pricing-card h3 { margin-top: 0; }
+  .pricing-card .price {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .pricing-card .price span { font-size: 0.9rem; font-weight: 400; color: #666; }
+
+  /* ===== FOOTER ===== */
+  .doc-footer {
+    text-align: center;
+    padding: 2rem;
+    color: #999;
+    font-size: 0.75rem;
+    border-top: 1px solid #eee;
+    margin-top: 3rem;
+  }
+
+  /* ===== SIGNATURE ===== */
+  .signature-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+  }
+
+  .signature-block .sig {
+    text-align: center;
+  }
+
+  .signature-block .sig-line {
+    border-top: 2px solid var(--dark);
+    margin: 2.5rem auto 0.5rem;
+    width: 200px;
+  }
+
+  .signature-block .sig-name { font-weight: 600; }
+  .signature-block .sig-title { font-size: 0.82rem; color: #666; }
+
+</style>
+</head>
+<body>
+
+<!-- ============================================================ -->
+<!-- PORTADA -->
+<!-- ============================================================ -->
+<div class="cover">
+  <div class="cover-content">
+    <div class="cover-badge">Documento Confidencial</div>
+    <h1>Propuesta Comercial de Transformación Digital Integral</h1>
+    <div class="cover-line"></div>
+    <h2>Para Práctica Médica Ginecológica</h2>
+
+    <div class="cover-for">
+      <p>Preparado exclusivamente para</p>
+      <p class="name">Dr. Eduardo Mendoza Ramírez</p>
+    </div>
+
+    <div class="cover-details" style="margin-top:2.5rem;">
+      <p><strong>Preparado por:</strong> Omar Flores — <a href="https://omarflores.dev" style="color:var(--accent);">omarflores.dev</a></p>
+      <p>Consultoría en Transformación Digital — Sector Salud</p>
+      <p style="margin-top:1rem;"><strong>Versión 1.0</strong> · Abril 2026</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ÍNDICE -->
+<!-- ============================================================ -->
+<div class="container toc">
+  <h1 class="section-title" style="text-align:center; border:none; margin-top:0;">Índice General</h1>
+  <ol class="toc-list">
+    <li><span class="num">01</span><span class="title">Resumen Ejecutivo</span></li>
+    <li><span class="num">02</span><span class="title">Diagnóstico de Situación Actual</span></li>
+    <li><span class="num">03</span><span class="title">Objetivos SMART</span></li>
+    <li><span class="num">04</span><span class="title">Alcance Detallado por Módulo</span></li>
+    <li style="padding-left:40px; border-bottom-style:dotted; border-color:#eee;">Módulo 1: Identidad e Imagen Digital</li>
+    <li style="padding-left:40px; border-bottom-style:dotted; border-color:#eee;">Módulo 2: Redes Sociales (Community Management)</li>
+    <li style="padding-left:40px; border-bottom-style:dotted; border-color:#eee;">Módulo 3: Contenido en Video — 30 Ideas</li>
+    <li style="padding-left:40px; border-bottom-style:dotted; border-color:#eee;">Módulo 4: Website Profesional</li>
+    <li style="padding-left:40px; border-bottom-style:dotted; border-color:#eee;">Módulo 5: Portal del Paciente, Citas y Teleconsulta</li>
+    <li style="padding-left:40px; border-bottom-style:dotted; border-color:#eee;">Módulo 6: Sistema RAG — Chat Inteligente</li>
+    <li><span class="num">05</span><span class="title">Inversión Estimada por Módulo</span></li>
+    <li><span class="num">06</span><span class="title">Cronograma de Implementación</span></li>
+    <li><span class="num">07</span><span class="title">Stack Tecnológico Recomendado</span></li>
+    <li><span class="num">08</span><span class="title">ROI Esperado y Métricas de Éxito</span></li>
+    <li><span class="num">09</span><span class="title">Términos y Condiciones</span></li>
+    <li><span class="num">10</span><span class="title">Próximos Pasos</span></li>
+    <li><span class="num">11</span><span class="title">Anexos</span></li>
+  </ol>
+</div>
+
+<!-- ============================================================ -->
+<!-- 1. RESUMEN EJECUTIVO -->
+<!-- ============================================================ -->
+<div class="container">
+  <h1 class="section-title">1. Resumen Ejecutivo</h1>
+
+  <h2>La Oportunidad</h2>
+  <p>El sector salud atraviesa una revolución digital sin precedentes. <strong>El 77% de los pacientes buscan información médica en línea antes de agendar una cita</strong>, y <strong>el 60% de las mujeres entre 25 y 45 años prefieren médicos con presencia digital activa y profesional</strong> (Accenture Health, 2024). En ginecología, esta tendencia es aún más marcada: la confianza, la cercanía y la educación digital son factores decisivos en la elección del especialista.</p>
+
+  <h2>La Propuesta</h2>
+  <p>Presentamos un <strong>ecosistema digital integral</strong> diseñado específicamente para su práctica ginecológica, compuesto por <strong>6 módulos interdependientes</strong> que transformarán radicalmente la forma en que atrae, atiende, retiene y fideliza a sus pacientes.</p>
+
+  <h2>Resumen de Decisión</h2>
+  <table>
+    <thead><tr><th>Elemento</th><th>Recomendación Comercial</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Nivel recomendado</strong></td><td>Enterprise: SaaS a medida + RAG + operación digital mensual</td></tr>
+      <tr><td><strong>Setup inicial sugerido</strong></td><td>$60,000-$80,000 MXN, según alcance final, integraciones y volumen de contenido inicial</td></tr>
+      <tr><td><strong>Retainer mensual sugerido</strong></td><td>$8,000-$15,000 MXN/mes para soporte, contenido, optimización, operación técnica y mejora continua</td></tr>
+      <tr><td><strong>MVP técnico</strong></td><td>Website profesional, agenda online, recordatorios y analítica base en 8-10 semanas</td></tr>
+      <tr><td><strong>Ecosistema técnico completo</strong></td><td>Chat RAG, automatizaciones avanzadas, portal del paciente y teleconsulta en 4-6 meses</td></tr>
+      <tr><td><strong>Siguiente paso</strong></td><td>Discovery técnico-comercial y cotización final por módulos aprobados</td></tr>
+    </tbody>
+  </table>
+
+  <div class="flow">
+    <div class="flow-step">🎯 ATRAER<br><small>Marca + RRSS + Contenido</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">🤝 CONVERTIR<br><small>Web + Chat + Agendamiento</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">💊 ATENDER<br><small>SaaS + Citas + Teleconsulta</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">💛 FIDELIZAR<br><small>Portal + CRM</small></div>
+  </div>
+
+  <h2>Resultados Esperados (12 meses)</h2>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-number">+80-150%</div>
+      <div class="stat-label">Nuevas pacientes mensuales</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">50-70%</div>
+      <div class="stat-label">Citas agendadas online</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">40-60%</div>
+      <div class="stat-label">Reducción de no-shows</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">+20-40%</div>
+      <div class="stat-label">Ingresos recurrentes</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">4.7+</div>
+      <div class="stat-label">Reputación en Google</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">Top 10%</div>
+      <div class="stat-label">Engagement en redes</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 2. DIAGNÓSTICO -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <h1 class="section-title">2. Diagnóstico de Situación Actual</h1>
+
+  <h2>2.1 Puntos de Dolor Identificados</h2>
+
+  <h3>🔴 Captación de Pacientes</h3>
+  <ul class="checklist-red">
+    <li>Dependencia exclusiva del boca a boca tradicional</li>
+    <li>Sin visibilidad en búsquedas de Google locales</li>
+    <li>Ausencia o presencia amateur en redes sociales</li>
+    <li>Sin diferenciación frente a competidores digitalizados</li>
+    <li>Pérdida de pacientes potenciales que buscan online</li>
+  </ul>
+
+  <h3>🔴 Gestión de Citas</h3>
+  <ul class="checklist-red">
+    <li>Agendamiento manual por teléfono (horario limitado)</li>
+    <li>Alta tasa de inasistencias (no-shows del 25-40%)</li>
+    <li>Sin recordatorios automatizados</li>
+    <li>Dificultad para gestionar citas recurrentes</li>
+    <li>Tiempo excesivo de la asistente en tareas repetitivas</li>
+  </ul>
+
+  <h3>🔴 Experiencia del Paciente</h3>
+  <ul class="checklist-red">
+    <li>Sin acceso a historial clínico digital</li>
+    <li>Resultados entregados solo en consultorio</li>
+    <li>Sin canal de comunicación post-consulta eficiente</li>
+    <li>Proceso de pago limitado (solo efectivo/terminal)</li>
+    <li>Sin seguimiento proactivo de controles periódicos</li>
+  </ul>
+
+  <h3>🔴 Operación y Crecimiento</h3>
+  <ul class="checklist-red">
+    <li>Sin métricas ni datos para tomar decisiones</li>
+    <li>Ingresos limitados a consultas presenciales</li>
+    <li>Sin modelo de ingresos recurrentes</li>
+    <li>Gestión administrativa manual y propensa a errores</li>
+    <li>Sin estrategia de fidelización estructurada</li>
+  </ul>
+
+  <h2>2.2 Análisis Comparativo</h2>
+  <table>
+    <thead>
+      <tr><th>Factor</th><th>Sin Estrategia Digital</th><th>Con Ecosistema Digital</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Visibilidad online</td><td>Prácticamente nula</td><td><strong>Dominio en búsquedas locales</strong></td></tr>
+      <tr><td>Captación de pacientes</td><td>5-10 nuevas/mes</td><td><strong>25-50 nuevas/mes</strong></td></tr>
+      <tr><td>Tasa de no-show</td><td>25-40%</td><td><strong>5-10%</strong></td></tr>
+      <tr><td>Ingresos por teleconsulta</td><td>$0</td><td><strong>15-20% de ingresos totales</strong></td></tr>
+      <tr><td>Tiempo admin. de asistente</td><td>6-8 hrs/día</td><td><strong>2-3 hrs/día</strong></td></tr>
+      <tr><td>Retención de pacientes</td><td>~40%</td><td><strong>~80%</strong></td></tr>
+      <tr><td>Fuentes de ingreso</td><td>1 (consulta presencial)</td><td><strong>5+ (presencial, tele, paquetes…)</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h2>2.3 Análisis FODA</h2>
+  <div class="foda-grid">
+    <div class="foda-card foda-f">
+      <h4>💪 Fortalezas</h4>
+      <ul>
+        <li>Expertise médico sólido</li>
+        <li>Relación de confianza con pacientes actuales</li>
+        <li>Servicios especializados</li>
+        <li>Formación continua</li>
+        <li>Vocación de servicio</li>
+      </ul>
+    </div>
+    <div class="foda-card foda-o">
+      <h4>🚀 Oportunidades</h4>
+      <ul>
+        <li>Mercado digital en salud femenina en crecimiento</li>
+        <li>Baja competencia digital local en ginecología</li>
+        <li>Demanda de teleconsulta alta</li>
+        <li>Tendencia de autocuidado y bienestar femenino</li>
+      </ul>
+    </div>
+    <div class="foda-card foda-d">
+      <h4>⚠️ Debilidades</h4>
+      <ul>
+        <li>Sin presencia digital actual</li>
+        <li>Procesos manuales</li>
+        <li>Sin sistema de CRM</li>
+        <li>Marca personal no desarrollada</li>
+        <li>Dependencia del boca a boca</li>
+      </ul>
+    </div>
+    <div class="foda-card foda-a">
+      <h4>🛑 Amenazas</h4>
+      <ul>
+        <li>Competidores digitalizados</li>
+        <li>Plataformas como Doctoralia capturan al paciente</li>
+        <li>Desinformación en redes</li>
+        <li>Cambios en algoritmos sociales</li>
+        <li>Regulaciones de publicidad médica</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 3. OBJETIVOS SMART -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <h1 class="section-title">3. Objetivos SMART</h1>
+
+  <h2>3.1 Corto Plazo (0-3 meses)</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Objetivo</th><th>Medible</th><th>Temporal</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Lanzar identidad digital</strong> — Marca personal completa con logo, paleta, manual de identidad</td><td>Entregables definidos</td><td>Mes 1</td></tr>
+      <tr><td>2</td><td><strong>Activar redes sociales</strong> — Perfiles optimizados en Instagram, TikTok, Facebook, YouTube</td><td>500 seguidores en IG, 30 publicaciones</td><td>Mes 1-3</td></tr>
+      <tr><td>3</td><td><strong>Lanzar website profesional</strong> — Sitio web completo con SEO local</td><td>Top 10 en búsquedas locales</td><td>Mes 2-3</td></tr>
+      <tr><td>4</td><td><strong>Implementar sistema de citas</strong> — Agendamiento online 24/7</td><td>40% citas agendadas online</td><td>Mes 2-3</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3.2 Mediano Plazo (4-6 meses)</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Objetivo</th><th>Indicador</th><th>Meta</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>5</td><td><strong>Posicionamiento SEO local</strong></td><td>Ranking Google "ginecólogo + [ciudad]"</td><td>Top 3</td></tr>
+      <tr><td>6</td><td><strong>Comunidad digital activa</strong></td><td>Seguidores totales</td><td>5,000+</td></tr>
+      <tr><td>7</td><td><strong>Chat inteligente operativo</strong></td><td>Tasa de resolución automatizada</td><td>70%+</td></tr>
+      <tr><td>8</td><td><strong>Contenido de video constante</strong></td><td>Videos publicados/mes</td><td>20+ piezas</td></tr>
+      <tr><td>9</td><td><strong>Reducción de no-shows</strong></td><td>Tasa de inasistencia</td><td>&lt;15%</td></tr>
+    </tbody>
+  </table>
+
+  <h2>3.3 Largo Plazo (7-12 meses)</h2>
+  <table>
+    <thead>
+      <tr><th>#</th><th>Objetivo</th><th>Indicador</th><th>Meta</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>10</td><td><strong>Portal del paciente operativo</strong></td><td>Pacientes registradas activas</td><td>100-250 iniciales</td></tr>
+      <tr><td>11</td><td><strong>Ingresos recurrentes</strong></td><td>Revenue de membresías/paquetes</td><td>10-20% de ingresos</td></tr>
+      <tr><td>12</td><td><strong>Teleconsulta activa</strong></td><td>Consultas virtuales/mes</td><td>15-30</td></tr>
+      <tr><td>13</td><td><strong>Autoridad digital</strong></td><td>Reconocimiento local</td><td>Top of Mind</td></tr>
+      <tr><td>14</td><td><strong>ROI positivo del ecosistema</strong></td><td>Retorno sobre inversión</td><td>Recuperación progresiva en Mes 6-12</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!-- 4. MÓDULOS -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <h1 class="section-title">4. Alcance Detallado por Módulo</h1>
+
+  <!-- MÓDULO 1 -->
+  <h2>Módulo 1: 🌐 Identidad e Imagen Digital</h2>
+
+  <h3>Diseño de Marca Personal Médica</h3>
+
+  <div class="highlight-box">
+    <strong>Entregables principales:</strong>
+    <ul style="margin-top:0.5rem;">
+      <li><strong>Logotipo Profesional</strong> — 3 propuestas, 2 rondas de revisión. Versiones: principal, secundario, isotipo, monograma. Formatos: AI, EPS, SVG, PNG, JPG.</li>
+      <li><strong>Paleta de Colores</strong> — Diseñada para ginecología moderna y de confianza.</li>
+      <li><strong>Tipografía</strong> — Playfair Display (encabezados), Inter/Nunito Sans (cuerpo), Caveat (acentos).</li>
+      <li><strong>Elementos Gráficos</strong> — Patrón de marca, iconografía, ilustraciones médicas estilizadas.</li>
+    </ul>
+  </div>
+
+  <h4>Paleta de Colores Recomendada</h4>
+  <table>
+    <thead><tr><th>Rol</th><th>Color</th><th>Código</th><th>Significado</th></tr></thead>
+    <tbody>
+      <tr><td>Primario</td><td style="background:#5B4A8A;color:#fff;text-align:center;">■■■</td><td>#5B4A8A</td><td>Confianza, profesionalismo</td></tr>
+      <tr><td>Secundario</td><td style="background:#E8A0BF;text-align:center;">■■■</td><td>#E8A0BF</td><td>Femineidad, calidez</td></tr>
+      <tr><td>Acento</td><td style="background:#2EC4B6;color:#fff;text-align:center;">■■■</td><td>#2EC4B6</td><td>Frescura, modernidad, salud</td></tr>
+      <tr><td>Neutro Oscuro</td><td style="background:#2D3436;color:#fff;text-align:center;">■■■</td><td>#2D3436</td><td>Elegancia, seriedad</td></tr>
+      <tr><td>Neutro Claro</td><td style="background:#F8F9FA;text-align:center;">■■■</td><td>#F8F9FA</td><td>Limpieza, claridad</td></tr>
+      <tr><td>Complementario</td><td style="background:#F4D35E;text-align:center;">■■■</td><td>#F4D35E</td><td>Premium, calidez</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Manual de Identidad Visual (25-35 páginas)</h3>
+  <p>Incluye: filosofía de marca, construcción del logotipo, área de seguridad, usos correctos e incorrectos, paleta de colores con códigos (HEX, RGB, CMYK, Pantone), tipografía, estilo fotográfico, y aplicaciones (tarjeta de presentación, recetario, papelería, señalización, templates de redes sociales, firma de email).</p>
+
+  <h3>Sesiones Fotográficas Profesionales</h3>
+  <table>
+    <thead><tr><th>Sesión</th><th>Duración</th><th>Descripción</th><th>Entrega</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Retrato Profesional</strong></td><td>2 horas</td><td>Headshots, fotos con bata, fotos casuales, 5 cambios</td><td>30 fotos editadas</td></tr>
+      <tr><td><strong>Consultorio y Servicios</strong></td><td>3 horas</td><td>Consultorio, simulación de consulta, detalles del espacio</td><td>40 fotos + 10 stock</td></tr>
+      <tr><td><strong>Contenido para Redes</strong></td><td>2 horas</td><td>Fotos temáticas para feed, stories, highlights, campañas</td><td>50 fotos optimizadas</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MÓDULO 2 -->
+<div class="container page-break">
+  <h2>Módulo 2: 📱 Redes Sociales (Community Management)</h2>
+
+  <h3>Plataformas a Activar</h3>
+  <table>
+    <thead><tr><th>Plataforma</th><th>Prioridad</th><th>Objetivo Principal</th><th>Audiencia</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Instagram</strong></td><td>🔴 Alta</td><td>Hub principal, educación, comunidad</td><td>Mujeres 22-45</td></tr>
+      <tr><td><strong>TikTok</strong></td><td>🔴 Alta</td><td>Viralidad, alcance, educación rápida</td><td>Mujeres 18-35</td></tr>
+      <tr><td><strong>Facebook</strong></td><td>🟡 Media</td><td>Comunidad, grupos, pacientes 35+</td><td>Mujeres 30-55</td></tr>
+      <tr><td><strong>YouTube Shorts</strong></td><td>🟡 Media</td><td>SEO, contenido evergreen, autoridad</td><td>Todas las edades</td></tr>
+      <tr><td><strong>LinkedIn</strong></td><td>🟢 Baja</td><td>Networking, autoridad profesional</td><td>Médicos, empresas</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Pilares de Contenido</h3>
+  <div class="pillar-grid">
+    <div class="pillar-card"><div class="pct">40%</div><div class="label">Educativo</div><div class="desc">Información de valor sobre salud femenina</div></div>
+    <div class="pillar-card"><div class="pct">20%</div><div class="label">Preventivo</div><div class="desc">Chequeos, vacunas, detección temprana</div></div>
+    <div class="pillar-card"><div class="pct">20%</div><div class="label">Humanización</div><div class="desc">Día a día, historia, tras cámaras</div></div>
+  </div>
+  <div class="pillar-grid" style="grid-template-columns: 1fr 1fr; max-width: 66%;">
+    <div class="pillar-card"><div class="pct">10%</div><div class="label">Interacción</div><div class="desc">Encuestas, Q&amp;A, retos</div></div>
+    <div class="pillar-card"><div class="pct">10%</div><div class="label">Promocional</div><div class="desc">Servicios, paquetes, testimonios</div></div>
+  </div>
+
+  <h3>Frecuencia de Publicación</h3>
+  <table>
+    <thead><tr><th>Plataforma</th><th>Feed/Post</th><th>Stories</th><th>Reels/Shorts</th><th>Lives</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Instagram</strong></td><td>3-4/semana</td><td>Diario (3-5)</td><td>3-4/semana</td><td>1-2/mes</td></tr>
+      <tr><td><strong>TikTok</strong></td><td>—</td><td>—</td><td>4-5/semana</td><td>1/mes</td></tr>
+      <tr><td><strong>Facebook</strong></td><td>3-4/semana</td><td>Opcional</td><td>Compartir IG</td><td>1/mes</td></tr>
+      <tr><td><strong>YouTube</strong></td><td>1-2/mes (largo)</td><td>—</td><td>3-4/semana</td><td>—</td></tr>
+      <tr><td><strong>LinkedIn</strong></td><td>1-2/semana</td><td>—</td><td>—</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <h3>KPIs Mensuales (Meta Mes 3+)</h3>
+  <table>
+    <thead><tr><th>Categoría</th><th>KPI</th><th>Meta</th></tr></thead>
+    <tbody>
+      <tr><td>Crecimiento</td><td>Nuevos seguidores (IG)</td><td>+300-500/mes</td></tr>
+      <tr><td>Crecimiento</td><td>Nuevos seguidores (TikTok)</td><td>+500-1000/mes</td></tr>
+      <tr><td>Alcance</td><td>Cuentas alcanzadas</td><td>15,000+</td></tr>
+      <tr><td>Engagement</td><td>Tasa de engagement (IG)</td><td>4-8%</td></tr>
+      <tr><td>Conversión</td><td>Citas agendadas desde redes</td><td>20+/mes</td></tr>
+      <tr><td>Conversión</td><td>DMs recibidos</td><td>100+/mes</td></tr>
+      <tr><td>Contenido</td><td>Videos con +10K views</td><td>3+/mes</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MÓDULO 3 -->
+<div class="container page-break">
+  <h2>Módulo 3: 🎬 Contenido en Video — 30 Ideas Organizadas</h2>
+
+  <h3>Educativos (10 videos)</h3>
+  <table>
+    <thead><tr><th>#</th><th>Concepto</th><th>Hook</th><th>Duración</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Lo que nadie te explicó sobre tu ciclo menstrual</td><td>"Tu ciclo tiene 4 fases y apuesto que solo conoces una..."</td><td>45-60s</td></tr>
+      <tr><td>2</td><td>Anticonceptivos: guía visual rápida</td><td>"Pastillas, DIU, implante... ¿cuál es para ti?"</td><td>60s</td></tr>
+      <tr><td>3</td><td>Menopausia: lo que viene y cómo prepararte</td><td>"Después de los 40, tu cuerpo empieza a mandarte señales..."</td><td>45-60s</td></tr>
+      <tr><td>4</td><td>5 señales de que debes ir al ginecólogo YA</td><td>"Si tienes alguna de estas 5 señales, no lo dejes para después"</td><td>30-45s</td></tr>
+      <tr><td>5</td><td>Flujo vaginal: ¿qué es normal y qué no?</td><td>"Que levante la mano quien se ha preguntado esto..."</td><td>45-60s</td></tr>
+      <tr><td>6</td><td>Todo sobre el VPH en 60 segundos</td><td>"El 80% de las personas activas tendrán VPH"</td><td>60s</td></tr>
+      <tr><td>7</td><td>¿Duele la primera consulta ginecológica?</td><td>"Si nunca has ido al ginecólogo, este video es para ti"</td><td>30-45s</td></tr>
+      <tr><td>8</td><td>Endometriosis: la enfermedad invisible</td><td>"¿Te dijeron que el dolor extremo es 'normal'?"</td><td>60s</td></tr>
+      <tr><td>9</td><td>Salud sexual: preguntas que nunca te atreves a hacer</td><td>"HOY contestamos lo que te da pena preguntar"</td><td>60s</td></tr>
+      <tr><td>10</td><td>Tu primer trimestre de embarazo</td><td>"Acabas de ver la prueba positiva... ¿y ahora qué?"</td><td>60s</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Preventivos (6) + Humanización (5) + FAQ (4) + Tendencias (3) + Testimoniales (2)</h3>
+
+  <div class="accent-box">
+    <strong>Producción mensual:</strong> 2 sesiones de grabación (4 hrs c/u) → 20-25 videos editados. Se mantiene siempre un banco de contenido con 2-3 semanas de ventaja. Todos los videos incluyen subtítulos, colores de marca, logo como marca de agua y formato vertical 9:16.
+  </div>
+</div>
+
+<!-- MÓDULO 4 -->
+<div class="container page-break">
+  <h2>Módulo 4: 🖥️ Website Profesional</h2>
+
+  <h3>Arquitectura del Sitio</h3>
+
+  <div class="highlight-box">
+    <strong>Secciones principales:</strong>
+    <ul style="margin-top:0.5rem;">
+      <li>🏠 <strong>HOME</strong> — Hero, CTA principal, servicios destacados, testimonios, blog, mapa</li>
+      <li>👨‍⚕️ <strong>Sobre el Doctor</strong> — Bio, formación, certificaciones, filosofía, video de presentación</li>
+      <li>🩺 <strong>Servicios</strong> — Cada uno con página propia (descripción, preparación, FAQ, CTA)</li>
+      <li>📅 <strong>Agendar Cita</strong> — Widget integrado con selección de servicio, fecha y hora</li>
+      <li>📝 <strong>Blog</strong> — Artículos SEO organizados por categoría</li>
+      <li>⭐ <strong>Testimonios</strong> — Integración con Google Reviews</li>
+      <li>❓ <strong>FAQ</strong> — Con Schema markup para Google</li>
+      <li>📍 <strong>Contacto</strong> — Formulario, WhatsApp, mapa, horarios</li>
+      <li>🔒 <strong>Portal del Paciente</strong> — Acceso al SaaS</li>
+    </ul>
+  </div>
+
+  <h3>Especificaciones Técnicas</h3>
+  <table>
+    <thead><tr><th>Aspecto</th><th>Especificación</th></tr></thead>
+    <tbody>
+      <tr><td>Plataforma</td><td>WordPress + Elementor Pro / Next.js (headless)</td></tr>
+      <tr><td>Hosting</td><td>VPS dedicado con SSL (SiteGround / Vercel)</td></tr>
+      <tr><td>Velocidad</td><td>&lt;3s carga completa (Core Web Vitals óptimos)</td></tr>
+      <tr><td>Diseño</td><td>Mobile-first, responsive, accesibilidad WCAG 2.1 AA</td></tr>
+      <tr><td>Seguridad</td><td>SSL/TLS, backups diarios, actualizaciones mensuales</td></tr>
+      <tr><td>SEO Técnico</td><td>Schema markup, meta tags, sitemap XML, canonical, breadcrumbs</td></tr>
+      <tr><td>SEO Local</td><td>Google Business Profile, NAP consistente, keywords locales</td></tr>
+      <tr><td>Integraciones</td><td>GA4, GTM, Search Console, Meta Pixel, TikTok Pixel, WhatsApp API, sistema de citas, chat RAG, CRM</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Estrategia de Blog SEO — Primeros 12 Artículos</h3>
+  <table>
+    <thead><tr><th>#</th><th>Título Optimizado</th><th>Keyword</th><th>Vol.</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>¿Cada cuánto ir al ginecólogo? Guía completa 2026</td><td>cada cuanto ir al ginecologo</td><td>Alto</td></tr>
+      <tr><td>2</td><td>Primera consulta ginecológica: todo lo que necesitas saber</td><td>primera consulta ginecológica</td><td>Alto</td></tr>
+      <tr><td>3</td><td>Papanicolaou: qué es, cómo se hace y cada cuándo</td><td>papanicolaou que es</td><td>Alto</td></tr>
+      <tr><td>4</td><td>DIU: tipos, ventajas, desventajas y FAQ</td><td>diu anticonceptivo</td><td>Alto</td></tr>
+      <tr><td>5</td><td>Síntomas de embarazo: primeras señales</td><td>sintomas de embarazo</td><td>Muy alto</td></tr>
+      <tr><td>6</td><td>VPH en mujeres: síntomas, tratamiento y prevención</td><td>vph en mujeres</td><td>Alto</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MÓDULO 5 -->
+<div class="container page-break">
+  <h2>Módulo 5: 📅 Portal del Paciente, Citas y Teleconsulta</h2>
+
+  <div class="highlight-box">
+    <p>Este módulo es el núcleo operativo del ecosistema: reduce carga administrativa, facilita el agendamiento, automatiza recordatorios y prepara la clínica para teleconsulta y seguimiento digital. Se recomienda implementarlo por fases para entregar valor temprano sin retrasar el lanzamiento del website ni del sistema de citas.</p>
+  </div>
+
+  <h3>Alcance por Fases</h3>
+  <table>
+    <thead><tr><th>Fase</th><th>Tiempo estimado</th><th>Entregables principales</th></tr></thead>
+    <tbody>
+      <tr><td><strong>MVP Operativo</strong></td><td>8-10 semanas</td><td>Agenda online 24/7, confirmaciones, recordatorios, solicitud de reseñas, panel administrativo y analítica base</td></tr>
+      <tr><td><strong>Portal del Paciente</strong></td><td>4-6 meses</td><td>Perfil de paciente, formularios preconsulta, consentimientos digitales, pagos, historial básico y preparación para teleconsulta</td></tr>
+      <tr><td><strong>Teleconsulta</strong></td><td>Posterior al MVP</td><td>Flujo de pago, enlace seguro, consentimiento específico, recordatorios y seguimiento post-consulta</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Flujo de Agendamiento</h3>
+
+  <div class="flow" style="flex-wrap:wrap;">
+    <div class="flow-step">📱 Acceso<br><small>Web / WhatsApp / RRSS / Google / Tel.</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">🩺 Selección<br><small>Tipo de servicio</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">📆 Fecha/Hora<br><small>Disponibilidad en tiempo real</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">📋 Datos<br><small>Formulario paciente</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">✅ Confirmación<br><small>+ Pago opcional</small></div>
+  </div>
+
+  <h3>Sistema de Recordatorios Automatizados</h3>
+  <table>
+    <thead><tr><th>Momento</th><th>Canal</th><th>Contenido</th></tr></thead>
+    <tbody>
+      <tr><td>Confirmación inmediata</td><td>WhatsApp + Email</td><td>Datos de cita + ubicación + instrucciones</td></tr>
+      <tr><td>48 horas antes</td><td>Email</td><td>Recordatorio con detalles completos</td></tr>
+      <tr><td>24 horas antes</td><td>WhatsApp + SMS</td><td>"Tu cita es mañana. ¿Confirmas? Responde SÍ o NO"</td></tr>
+      <tr><td>2 horas antes</td><td>WhatsApp</td><td>"Te esperamos en 2 horas. Dirección: [link]"</td></tr>
+      <tr><td>1 hora después</td><td>Email</td><td>Agradecimiento + receta digital</td></tr>
+      <tr><td>24 horas después</td><td>WhatsApp</td><td>Solicitud de reseña (Google/Doctoralia)</td></tr>
+      <tr><td>Según protocolo</td><td>WhatsApp + Email</td><td>Recordatorio de próximo control</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Citas Recurrentes Automáticas</h3>
+  <table>
+    <thead><tr><th>Tipo de Servicio</th><th>Frecuencia</th><th>Auto-agenda</th></tr></thead>
+    <tbody>
+      <tr><td>Control ginecológico</td><td>Cada 12 meses</td><td>✅</td></tr>
+      <tr><td>Control prenatal</td><td>Mensual → quincenal</td><td>✅</td></tr>
+      <tr><td>Seguimiento post-cirugía</td><td>1 sem, 1 mes, 3 meses</td><td>✅</td></tr>
+      <tr><td>Control anticoncepción</td><td>Cada 3-6 meses</td><td>✅</td></tr>
+      <tr><td>Seguimiento embarazo</td><td>Según semana gestacional</td><td>✅</td></tr>
+      <tr><td>Revisión de resultados</td><td>1-2 semanas post-estudio</td><td>✅</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- MÓDULO 6 -->
+<div class="container page-break">
+  <h2>Módulo 6: 🤖 Sistema RAG — Chat Inteligente</h2>
+
+  <h3>Arquitectura del Asistente Virtual</h3>
+
+  <div class="highlight-box">
+    <p>Asistente con <strong>Retrieval Augmented Generation (RAG)</strong> que combina inteligencia artificial con una base de conocimiento especializada del consultorio. Disponible en <strong>Web Widget, WhatsApp Business y Facebook Messenger</strong>.</p>
+  </div>
+
+  <h3>Base de Conocimiento (Vectores)</h3>
+  <ul>
+    <li>Protocolos médicos ginecológicos</li>
+    <li>FAQ del consultorio (200+ preguntas)</li>
+    <li>Información de servicios y precios</li>
+    <li>Guías de preparación pre-consulta</li>
+    <li>Información de ubicación y horarios</li>
+    <li>Políticas del consultorio</li>
+    <li>Información general de salud femenina (OMS, ACOG, NOM)</li>
+    <li>Disclaimers y avisos legales</li>
+    <li>Flujos conversacionales personalizados</li>
+  </ul>
+
+  <h3>Flujos Conversacionales</h3>
+
+  <table>
+    <thead><tr><th>Flujo</th><th>Descripción</th><th>Resultado</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Información General</strong></td><td>Servicios, horarios, ubicación, precios</td><td>Respuesta informativa + CTA</td></tr>
+      <tr><td><strong>Triaje Inteligente</strong></td><td>Preguntas de evaluación → clasificación de urgencia</td><td>🔴 Urgencias / 🟡 Cita pronto / 🟢 Agenda regular</td></tr>
+      <tr><td><strong>Agendamiento Directo</strong></td><td>Selección de servicio → horarios → datos → confirmación</td><td>Cita agendada desde el chat</td></tr>
+      <tr><td><strong>Escalamiento</strong></td><td>Casos que requieren atención humana</td><td>Conexión con asistente</td></tr>
+      <tr><td><strong>Educación</strong></td><td>Preguntas sobre salud femenina</td><td>Respuesta con disclaimer médico</td></tr>
+      <tr><td><strong>Seguimiento</strong></td><td>Post-consulta, resultados, próximos pasos</td><td>Info personalizada</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warning-box">
+    <strong>⚠️ Protocolo de seguridad:</strong> El asistente NUNCA diagnostica. Siempre incluye disclaimers médicos. Escala a humano ante emergencias. Cumple con regulaciones de datos de salud.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 5. INVERSIÓN -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <h1 class="section-title">5. Inversión Estimada por Módulo</h1>
+
+  <div class="accent-box">
+    <strong>Recomendación:</strong> Por el alcance de marca, website, automatizaciones, portal, teleconsulta y chat RAG, este proyecto corresponde a un paquete <strong>Enterprise</strong>. La cotización final se ajustará después del discovery técnico, pero conviene presentar desde el inicio un rango de inversión realista.
+  </div>
+
+  <h2>Rango Comercial Recomendado</h2>
+  <table>
+    <thead><tr><th>Concepto</th><th>Rango sugerido</th><th>Qué cubre</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Setup inicial Enterprise</strong></td><td><strong>$60,000-$80,000 MXN</strong></td><td>Branding, website, sistema de citas, automatizaciones, arquitectura RAG, configuración inicial y lanzamiento controlado</td></tr>
+      <tr><td><strong>Retainer mensual</strong></td><td><strong>$8,000-$15,000 MXN/mes</strong></td><td>Soporte técnico, mejora continua, contenido, SEO, reportes, monitoreo de automatizaciones y optimización mensual</td></tr>
+      <tr><td><strong>Costos variables</strong></td><td>Según consumo</td><td>Hosting, dominio, WhatsApp Business API, SMS, herramientas SaaS, pauta publicitaria y consumo de IA</td></tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead><tr><th>Módulo</th><th>Descripción</th><th>Tipo de Pago</th></tr></thead>
+    <tbody>
+      <tr><td><strong>M1</strong></td><td>Identidad e Imagen Digital (marca, manual, sesiones foto)</td><td>Pago único</td></tr>
+      <tr><td><strong>M2</strong></td><td>Redes Sociales — Community Management</td><td>Mensualidad</td></tr>
+      <tr><td><strong>M3</strong></td><td>Producción de Contenido en Video</td><td>Mensualidad</td></tr>
+      <tr><td><strong>M4</strong></td><td>Website Profesional + Blog SEO</td><td>Pago único + mantenimiento mensual</td></tr>
+      <tr><td><strong>M5</strong></td><td>Portal del Paciente, Citas y Teleconsulta</td><td>Setup único + mensualidad</td></tr>
+      <tr><td><strong>M6</strong></td><td>Chat Inteligente RAG</td><td>Setup único + mensualidad</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <strong>Beneficios de contratar el ecosistema completo:</strong>
+    <ul style="margin-top:0.5rem;">
+      <li>✅ Descuento por integración de módulos (ecosistema completo)</li>
+      <li>✅ Soporte prioritario y dedicado</li>
+      <li>✅ Dashboard unificado de métricas</li>
+      <li>✅ Seguimiento mensual contra KPIs acordados</li>
+      <li>✅ Consultoría estratégica mensual incluida</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 6. CRONOGRAMA -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <h1 class="section-title">6. Cronograma de Implementación</h1>
+
+  <h2>Fase 1: Fundamentos (Mes 1-2)</h2>
+  <table>
+    <thead><tr><th>Semana</th><th>Actividad</th><th>Módulo</th><th>Entregable</th></tr></thead>
+    <tbody>
+      <tr><td>S1</td><td>Kickoff + Briefing estratégico</td><td>General</td><td>Documento de requerimientos</td></tr>
+      <tr><td>S1-S2</td><td>Diseño de identidad visual</td><td>M1</td><td>Propuestas de logotipo</td></tr>
+      <tr><td>S2-S3</td><td>Desarrollo de manual de marca</td><td>M1</td><td>Manual de identidad (25-35 págs)</td></tr>
+      <tr><td>S3</td><td>Sesiones fotográficas</td><td>M1</td><td>120+ fotos profesionales editadas</td></tr>
+      <tr><td>S3-S4</td><td>Configuración de perfiles sociales</td><td>M2</td><td>5 plataformas optimizadas</td></tr>
+      <tr><td>S4-S6</td><td>Diseño y desarrollo del website</td><td>M4</td><td>Sitio web completo en staging</td></tr>
+      <tr><td>S5-S6</td><td>Producción del primer batch de contenido</td><td>M3</td><td>15-20 videos + 20 posts estáticos</td></tr>
+      <tr><td>S6-S8</td><td>Redacción de primeros artículos blog</td><td>M4</td><td>4 artículos SEO publicados</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Fase 2: Activación (Mes 2-3)</h2>
+  <table>
+    <thead><tr><th>Semana</th><th>Actividad</th><th>Módulo</th><th>Entregable</th></tr></thead>
+    <tbody>
+      <tr><td>S7-S8</td><td>Lanzamiento oficial del website</td><td>M4</td><td>Sitio live + SEO técnico</td></tr>
+      <tr><td>S7-S8</td><td>Inicio de publicaciones en redes</td><td>M2</td><td>Calendario editorial en ejecución</td></tr>
+      <tr><td>S8-S10</td><td>Implementación del MVP de citas</td><td>M5</td><td>Agenda online, confirmaciones y panel operativo</td></tr>
+      <tr><td>S9-S10</td><td>Configuración de recordatorios automáticos</td><td>M5</td><td>Flujos de WhatsApp + Email activos</td></tr>
+      <tr><td>S10-S12</td><td>Optimización Google Business Profile</td><td>M4</td><td>Perfil verificado y optimizado</td></tr>
+      <tr><td>S10-S12</td><td>Primera campaña de pauta digital</td><td>M2</td><td>Campaña activa IG + FB Ads</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Fase 3: Inteligencia (Mes 3-5)</h2>
+  <table>
+    <thead><tr><th>Semana</th><th>Actividad</th><th>Módulo</th><th>Entregable</th></tr></thead>
+    <tbody>
+      <tr><td>S12-S14</td><td>Desarrollo del Chat RAG</td><td>M6</td><td>Base de conocimiento vectorizada</td></tr>
+      <tr><td>S14-S16</td><td>Entrenamiento y pruebas del chatbot</td><td>M6</td><td>Chatbot en testing</td></tr>
+      <tr><td>S16-S18</td><td>Lanzamiento del Chat en Web + WhatsApp</td><td>M6</td><td>Chat operativo multicanal</td></tr>
+      <tr><td>S12-S20</td><td>Operación continua de redes y contenido</td><td>M2+M3</td><td>Reportes mensuales de métricas</td></tr>
+      <tr><td>S16-S20</td><td>Optimización SEO y nuevos artículos</td><td>M4</td><td>8+ artículos publicados en total</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Fase 4: Crecimiento y Optimización (Mes 5-12)</h2>
+  <table>
+    <thead><tr><th>Período</th><th>Actividad</th><th>Módulo</th><th>Meta</th></tr></thead>
+    <tbody>
+      <tr><td>Mes 5-6</td><td>Optimización basada en datos y A/B testing</td><td>Todos</td><td>Mejora continua de KPIs</td></tr>
+      <tr><td>Mes 6-7</td><td>Implementación de paquetes y membresías</td><td>M5</td><td>Modelo de ingresos recurrentes en piloto</td></tr>
+      <tr><td>Mes 7-8</td><td>Teleconsulta operativa</td><td>M5+M6</td><td>Flujo validado con primeros pacientes</td></tr>
+      <tr><td>Mes 8-10</td><td>Escalamiento de pauta publicitaria</td><td>M2</td><td>ROI publicitario optimizado</td></tr>
+      <tr><td>Mes 10-12</td><td>Portal del paciente completo</td><td>M5+M6</td><td>Adopción progresiva y métricas de uso</td></tr>
+      <tr><td>Mes 12</td><td>Evaluación integral y plan año 2</td><td>General</td><td>ROI y crecimiento documentados</td></tr>
+    </tbody>
+  </table>
+
+  <div class="highlight-box">
+    <strong>Tiempo estimado de la parte técnica:</strong> El website profesional puede estar listo en <strong>6 a 8 semanas</strong>, el sistema de citas y automatizaciones base en <strong>8 a 10 semanas</strong>, y el chat RAG multicanal en <strong>12 a 18 semanas</strong>. El ecosistema técnico completo (web, citas, automatizaciones, RAG y base para teleconsulta/portal) se consolida normalmente en <strong>4 a 6 meses</strong>, dependiendo de integraciones, aprobaciones y disponibilidad de contenido.
+  </div>
+
+  <div class="accent-box">
+    <strong>📊 Revisiones periódicas:</strong> Se realizarán reuniones de seguimiento quincenales durante los primeros 3 meses, y mensuales a partir del mes 4. Cada reunión incluye presentación de métricas, análisis de resultados y ajustes estratégicos.
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 7. STACK TECNOLÓGICO -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <h1 class="section-title">7. Stack Tecnológico Recomendado</h1>
+
+  <h2>Frontend &amp; Website</h2>
+  <table>
+    <thead><tr><th>Tecnología</th><th>Uso</th><th>Justificación</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Next.js / WordPress</strong></td><td>Website principal</td><td>SEO óptimo, rendimiento, escalabilidad</td></tr>
+      <tr><td><strong>Tailwind CSS</strong></td><td>Estilos del sitio</td><td>Diseño consistente, desarrollo rápido</td></tr>
+      <tr><td><strong>Vercel / SiteGround</strong></td><td>Hosting</td><td>CDN global, SSL, alta disponibilidad</td></tr>
+      <tr><td><strong>Cloudflare</strong></td><td>CDN + Seguridad</td><td>Velocidad, protección DDoS, caché</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Backend &amp; APIs</h2>
+  <table>
+    <thead><tr><th>Tecnología</th><th>Uso</th><th>Justificación</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Node.js / Python</strong></td><td>API del sistema</td><td>Ecosistema maduro, rendimiento</td></tr>
+      <tr><td><strong>PostgreSQL</strong></td><td>Base de datos principal</td><td>Robustez, integridad de datos médicos</td></tr>
+      <tr><td><strong>Redis</strong></td><td>Caché y sesiones</td><td>Velocidad en consultas frecuentes</td></tr>
+      <tr><td><strong>WhatsApp Business API</strong></td><td>Mensajería automatizada</td><td>Canal preferido por pacientes en LATAM</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Inteligencia Artificial (Chat RAG)</h2>
+  <table>
+    <thead><tr><th>Tecnología</th><th>Uso</th><th>Justificación</th></tr></thead>
+    <tbody>
+      <tr><td><strong>OpenAI GPT-4o / Claude</strong></td><td>Motor de lenguaje (LLM)</td><td>Mejor comprensión y generación en español</td></tr>
+      <tr><td><strong>Pinecone / Weaviate</strong></td><td>Base de datos vectorial</td><td>Búsqueda semántica rápida y precisa</td></tr>
+      <tr><td><strong>LangChain</strong></td><td>Orquestación RAG</td><td>Framework maduro para RAG pipelines</td></tr>
+      <tr><td><strong>OpenAI Embeddings</strong></td><td>Vectorización de documentos</td><td>Alta precisión en español médico</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Analytics &amp; Marketing</h2>
+  <table>
+    <thead><tr><th>Tecnología</th><th>Uso</th><th>Justificación</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Google Analytics 4</strong></td><td>Analítica web</td><td>Estándar de la industria, gratuito</td></tr>
+      <tr><td><strong>Google Tag Manager</strong></td><td>Gestión de tags</td><td>Flexibilidad sin tocar código</td></tr>
+      <tr><td><strong>Meta Business Suite</strong></td><td>Gestión de RRSS y pauta</td><td>Centralización de FB + IG</td></tr>
+      <tr><td><strong>Hotjar / Clarity</strong></td><td>Heatmaps y grabaciones</td><td>Entender comportamiento del usuario</td></tr>
+      <tr><td><strong>Google Search Console</strong></td><td>SEO monitoring</td><td>Rendimiento en búsquedas de Google</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Herramientas de Diseño y Contenido</h2>
+  <table>
+    <thead><tr><th>Herramienta</th><th>Uso</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Adobe Creative Suite</strong></td><td>Diseño de marca, edición fotográfica profesional</td></tr>
+      <tr><td><strong>Figma</strong></td><td>Diseño UI/UX del website y app</td></tr>
+      <tr><td><strong>CapCut Pro / Premiere Rush</strong></td><td>Edición de video para redes sociales</td></tr>
+      <tr><td><strong>Canva Pro</strong></td><td>Templates y contenido rápido para RRSS</td></tr>
+      <tr><td><strong>Later / Metricool</strong></td><td>Programación y analítica de publicaciones</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!-- 8. ROI -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <h1 class="section-title">8. ROI Esperado y Métricas de Éxito</h1>
+
+  <h2>8.1 Proyección de Impacto en Ingresos</h2>
+
+  <div class="highlight-box">
+    <p><strong>Supuestos base:</strong> Consulta promedio $1,000-1,500 MXN · 20 días laborales/mes · capacidad actual aproximada: 15 pacientes/día. Las proyecciones dependen de la adopción del equipo, velocidad de aprobación de contenido y presupuesto de pauta.</p>
+  </div>
+
+  <h2>8.1.1 Caso Simple de Retorno</h2>
+  <table>
+    <thead><tr><th>Escenario</th><th>Impacto mensual estimado</th><th>Lectura comercial</th></tr></thead>
+    <tbody>
+      <tr><td>5 pacientes nuevas adicionales/mes</td><td>$5,000-$7,500 MXN por primera consulta, sin contar seguimiento</td><td>Cubre una parte relevante del retainer mensual</td></tr>
+      <tr><td>8-12 pacientes nuevas adicionales/mes</td><td>$8,000-$18,000 MXN por primeras consultas</td><td>El retainer puede pagarse con la captación incremental</td></tr>
+      <tr><td>Reducción de no-shows</td><td>Recuperación de espacios perdidos en agenda</td><td>Mejora ingresos sin aumentar la carga operativa del doctor</td></tr>
+    </tbody>
+  </table>
+
+  <table>
+    <thead><tr><th>Indicador</th><th>Sin Ecosistema</th><th>Con Ecosistema (Mes 6)</th><th>Con Ecosistema (Mes 12)</th></tr></thead>
+    <tbody>
+      <tr><td>Pacientes nuevas / mes</td><td>8-12</td><td>18-28</td><td><strong>25-40</strong></td></tr>
+      <tr><td>Tasa de retención</td><td>40%</td><td>55-65%</td><td><strong>65-75%</strong></td></tr>
+      <tr><td>Consultas totales / mes</td><td>150-200</td><td>220-280</td><td><strong>260-340</strong></td></tr>
+      <tr><td>Teleconsultas / mes</td><td>0</td><td>Piloto</td><td><strong>15-30</strong></td></tr>
+      <tr><td>Ingresos por membresías</td><td>$0</td><td>Inicial</td><td><strong>10-20% de ingresos</strong></td></tr>
+      <tr><td>No-shows</td><td>25-40%</td><td>15-20%</td><td><strong>10-15%</strong></td></tr>
+      <tr><td>Fuentes de ingreso</td><td>1</td><td>2-3</td><td><strong>3-4</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h2>8.2 Métricas de Éxito por Módulo</h2>
+  <table>
+    <thead><tr><th>Módulo</th><th>KPI Principal</th><th>Meta Mes 3</th><th>Meta Mes 6</th><th>Meta Mes 12</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Identidad</strong></td><td>Reconocimiento de marca</td><td>Marca lanzada</td><td>Reconocimiento local</td><td>Top of Mind</td></tr>
+      <tr><td><strong>Redes Sociales</strong></td><td>Seguidores IG</td><td>500+</td><td>3,000+</td><td>8,000+</td></tr>
+      <tr><td><strong>Video</strong></td><td>Views promedio por video</td><td>1,000+</td><td>5,000+</td><td>10,000+</td></tr>
+      <tr><td><strong>Website</strong></td><td>Visitas orgánicas/mes</td><td>500+</td><td>2,000+</td><td>5,000+</td></tr>
+      <tr><td><strong>Citas</strong></td><td>% citas online</td><td>30%</td><td>55%</td><td>70%+</td></tr>
+      <tr><td><strong>Chat RAG</strong></td><td>Resolución automática</td><td>—</td><td>60%</td><td>80%+</td></tr>
+    </tbody>
+  </table>
+
+  <h2>8.3 ROI Proyectado</h2>
+
+  <div class="stat-grid">
+    <div class="stat-card">
+      <div class="stat-number">80-120%</div>
+      <div class="stat-label">ROI estimado — Mes 6</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">180-250%</div>
+      <div class="stat-label">ROI estimado — Mes 12</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">6-8 sem</div>
+      <div class="stat-label">Tiempo para primeros resultados</div>
+    </div>
+  </div>
+
+  <div class="accent-box">
+    <p><strong>💡 Nota importante:</strong> El ROI se calcula considerando el incremento neto en ingresos generados por el ecosistema digital (nuevas pacientes, reducción de no-shows, teleconsultas, membresías) versus la inversión total en la transformación digital. Los resultados pueden variar según la zona geográfica, la competencia local y la participación activa del doctor en la generación de contenido.</p>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9. TÉRMINOS Y CONDICIONES -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <h1 class="section-title">9. Términos y Condiciones</h1>
+
+  <h2>9.1 Alcance del Servicio</h2>
+  <ul>
+    <li>Los servicios descritos en esta propuesta se entregarán conforme al cronograma establecido y aprobado por ambas partes.</li>
+    <li>Cualquier trabajo adicional fuera del alcance definido será cotizado por separado mediante una orden de cambio.</li>
+    <li>El cliente proporcionará acceso oportuno a la información, materiales y aprobaciones necesarias para el avance del proyecto.</li>
+  </ul>
+
+  <h2>9.2 Supuestos para el Éxito del Proyecto</h2>
+  <ul>
+    <li>El doctor o su asistente designarán un responsable operativo para validar información, horarios, precios, procesos y aprobaciones.</li>
+    <li>El contenido médico será revisado y aprobado por el Dr. Mendoza antes de publicarse o incorporarse a la base de conocimiento del RAG.</li>
+    <li>El proyecto requiere acceso oportuno a dominio, hosting, Google Business Profile, redes sociales, WhatsApp Business y herramientas actuales de agenda.</li>
+    <li>La generación de resultados comerciales depende de consistencia en contenido, seguimiento de leads, atención de recepción y presupuesto mínimo de pauta cuando aplique.</li>
+    <li>Los tiempos pueden variar si se agregan integraciones médicas, pasarelas de pago, expediente clínico certificado o flujos legales adicionales.</li>
+  </ul>
+
+  <h2>9.3 Qué No Incluye</h2>
+  <ul>
+    <li>Inversión en pauta publicitaria, compra de medios o presupuesto de campañas.</li>
+    <li>Costos de terceros: dominio, hosting, WhatsApp Business API, SMS, herramientas SaaS, pasarelas de pago, consumo de IA o almacenamiento adicional.</li>
+    <li>Asesoría legal especializada, dictámenes regulatorios o trámites ante autoridades sanitarias.</li>
+    <li>Expediente clínico electrónico certificado, salvo que se cotice como integración o desarrollo adicional.</li>
+    <li>Producción audiovisual fuera del calendario aprobado, traslados, renta de locaciones o talento externo.</li>
+  </ul>
+
+  <h2>9.4 Propiedad Intelectual</h2>
+  <ul>
+    <li>Todos los materiales de marca (logotipo, manual de identidad, fotografías) serán propiedad del Dr. Eduardo Mendoza Ramírez una vez completado el pago total.</li>
+    <li>El código fuente del website y las integraciones desarrolladas a medida serán propiedad del cliente.</li>
+    <li>Omar Flores se reserva el derecho de incluir el proyecto en su portafolio profesional, previa autorización del cliente.</li>
+    <li>Las licencias de software de terceros (hosting, APIs, herramientas SaaS) son responsabilidad del cliente y se facturarán por separado.</li>
+  </ul>
+
+  <h2>9.5 Confidencialidad</h2>
+  <ul>
+    <li>Ambas partes se comprometen a mantener la confidencialidad de toda la información compartida durante el proyecto.</li>
+    <li>Los datos de pacientes se manejarán bajo estricto cumplimiento de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP) y la NOM-024-SSA3-2012.</li>
+    <li>Se implementarán medidas de seguridad técnicas y organizativas para la protección de datos sensibles de salud.</li>
+  </ul>
+
+  <h2>9.6 Forma de Pago</h2>
+  <ul>
+    <li><strong>Setup inicial:</strong> 40% al firmar contrato, 30% al aprobar versión alfa y 30% contra entrega/lanzamiento del alcance contratado.</li>
+    <li><strong>Mensualidades:</strong> Pago anticipado los primeros 5 días de cada mes.</li>
+    <li><strong>Métodos de pago:</strong> Transferencia bancaria, tarjeta de crédito/débito, o depósito en efectivo.</li>
+    <li>Los precios no incluyen IVA (16%), el cual se agregará a cada factura.</li>
+  </ul>
+
+  <h2>9.7 Vigencia y Cancelación</h2>
+  <ul>
+    <li>Esta propuesta tiene una vigencia de <strong>30 días naturales</strong> a partir de la fecha de emisión.</li>
+    <li>El contrato de servicios mensuales tiene un compromiso mínimo de <strong>6 meses</strong> para garantizar resultados medibles.</li>
+    <li>Después del período mínimo, cualquiera de las partes puede cancelar con <strong>30 días de aviso previo</strong> por escrito.</li>
+    <li>En caso de cancelación anticipada, se facturarán los servicios prestados hasta la fecha de cancelación efectiva.</li>
+  </ul>
+
+  <h2>9.8 Garantías</h2>
+  <ul>
+    <li>Garantizamos la calidad profesional de todos los entregables y su cumplimiento con los estándares de la industria.</li>
+    <li>Se incluyen <strong>2 rondas de revisión</strong> por cada entregable de diseño.</li>
+    <li>Soporte técnico del website durante <strong>12 meses</strong> posteriores al lanzamiento.</li>
+    <li>Los resultados de marketing (seguidores, engagement, pacientes nuevas) son estimaciones basadas en la experiencia y benchmarks de la industria, <strong>no constituyen una garantía absoluta</strong> de resultados.</li>
+  </ul>
+
+  <h2>9.9 Regulaciones del Sector Salud</h2>
+  <div class="warning-box">
+    <p><strong>⚠️ Importante:</strong> Todo el contenido digital se desarrollará cumpliendo con:</p>
+    <ul style="margin-top:0.5rem;">
+      <li>Ley General de Salud y reglamentos aplicables</li>
+      <li>NOM-024-SSA3-2012 (Sistemas de información de registro electrónico para la salud)</li>
+      <li>Código de Ética del Colegio de Ginecólogos</li>
+      <li>Lineamientos de COFEPRIS para publicidad de servicios médicos</li>
+      <li>Ley Federal de Protección de Datos Personales (LFPDPPP)</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.10 ÉTICA MÉDICA EN CONTENIDO DIGITAL -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <h2>9.10 Ética Médica en Contenido Digital</h2>
+
+  <div class="warning-box">
+    <strong>⚠️ Siempre incluir en todo contenido digital:</strong>
+    <ul style="margin-top:0.5rem;">
+      <li>"Consulta a tu médico" en contenido de síntomas</li>
+      <li>"Esta información es educativa, no sustituye la consulta médica profesional"</li>
+      <li>Fuentes de la información cuando se citen datos</li>
+      <li>Cédula profesional visible donde la norma lo requiera</li>
+      <li>Aviso de privacidad accesible en todos los canales</li>
+      <li>Consentimiento antes de usar imagen/testimonio de paciente</li>
+      <li>Disclaimers en el chatbot en TODA interacción clínica</li>
+    </ul>
+  </div>
+
+  <h3>Proceso de Aprobación de Contenido</h3>
+
+  <div class="flow" style="flex-wrap:wrap;">
+    <div class="flow-step">📝 Marketing<br><small>Crea borrador</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">🩺 Revisión Médica<br><small>Exactitud + Ética</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">⚖️ Revisión Legal<br><small>Disclaimers + Compliance</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">✅ Aprobación Final<br><small>Doctor</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">📅 Publicación<br><small>Programada</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">👁️ Monitoreo<br><small>Comentarios</small></div>
+  </div>
+
+  <div class="accent-box">
+    <strong>⏱️ Tiempo estimado del ciclo:</strong> 48-72 horas por pieza de contenido.<br>
+    <strong>📋 Documentación:</strong> Todo queda registrado en un log de aprobaciones con fecha, responsable y versión.
+  </div>
+
+  <h2>9.11 Consentimiento Informado Digital</h2>
+
+  <h3>1. Consentimiento de Tratamiento de Datos Personales</h3>
+  <table>
+    <thead><tr><th>Elemento</th><th>Descripción</th></tr></thead>
+    <tbody>
+      <tr><td>Alcance</td><td>Recopilación y almacenamiento de datos médicos</td></tr>
+      <tr><td>Comunicaciones</td><td>Uso de datos para recordatorios y comunicaciones</td></tr>
+      <tr><td>Terceros</td><td>Compartir datos con laboratorios aliados (previa autorización)</td></tr>
+      <tr><td>Firma</td><td>Firma electrónica avanzada (NOM-151-SCFI-2002)</td></tr>
+      <tr><td>Revocación</td><td>Derecho a revocar en cualquier momento</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2. Consentimiento para Teleconsulta</h3>
+  <table>
+    <thead><tr><th>Elemento</th><th>Descripción</th></tr></thead>
+    <tbody>
+      <tr><td>Limitaciones</td><td>Entendimiento de limitaciones de consulta virtual</td></tr>
+      <tr><td>Urgencias</td><td>Aceptación de que NO sustituye urgencias</td></tr>
+      <tr><td>Grabación</td><td>Autorización de grabación (si aplica)</td></tr>
+      <tr><td>Prescripción</td><td>Política de prescripción a distancia</td></tr>
+      <tr><td>Responsabilidades</td><td>Conexión estable, privacidad del paciente</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3. Consentimiento para Uso de Testimonios</h3>
+  <table>
+    <thead><tr><th>Elemento</th><th>Descripción</th></tr></thead>
+    <tbody>
+      <tr><td>Autorización</td><td>Escrita y específica por cada paciente</td></tr>
+      <tr><td>Anonimización</td><td>Opción de publicar de forma anónima</td></tr>
+      <tr><td>Canales</td><td>Especificación de dónde se utilizará (redes, web, etc.)</td></tr>
+      <tr><td>Retiro</td><td>Derecho a retirar consentimiento en cualquier momento</td></tr>
+      <tr><td>Revisión</td><td>Paciente revisa el testimonio antes de publicar</td></tr>
+    </tbody>
+  </table>
+
+  <h3>4. Consentimiento para Comunicaciones Electrónicas</h3>
+  <table>
+    <thead><tr><th>Canal</th><th>Detalle</th></tr></thead>
+    <tbody>
+      <tr><td>WhatsApp / SMS</td><td>Recordatorios de citas, confirmaciones</td></tr>
+      <tr><td>Email marketing</td><td>Newsletter, promociones, contenido educativo</td></tr>
+      <tr><td>Notificaciones push</td><td>Alertas del portal del paciente</td></tr>
+      <tr><td>Frecuencia máxima</td><td>Definida y comunicada al paciente</td></tr>
+      <tr><td>Opt-out</td><td>Fácil y visible en cada comunicación</td></tr>
+    </tbody>
+  </table>
+
+  <h3>5. Consentimiento para Menores de Edad</h3>
+  <table>
+    <thead><tr><th>Requisito</th><th>Descripción</th></tr></thead>
+    <tbody>
+      <tr><td>Autorización</td><td>Padre, madre o tutor legal</td></tr>
+      <tr><td>Verificación</td><td>Verificación de identidad del tutor</td></tr>
+      <tr><td>Documentación</td><td>Documento de tutela si aplica</td></tr>
+      <tr><td>Restricciones digitales</td><td>Restricciones de acceso en portal digital</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Implementación Técnica del Consentimiento</h3>
+  <div class="highlight-box">
+    <ul>
+      <li>✅ Formularios digitales con checkbox obligatorio</li>
+      <li>✅ Firma electrónica con timestamp</li>
+      <li>✅ PDF auto-generado y descargable por el paciente</li>
+      <li>✅ Almacenamiento seguro con control de versiones</li>
+      <li>✅ Auditoría de quién firmó, cuándo y desde dónde</li>
+      <li>✅ Renovación periódica según normativa vigente</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- 9.12 PLAN DE CONTINGENCIA -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <h2>9.12 Plan de Contingencia y Continuidad</h2>
+
+  <table>
+    <thead><tr><th>Escenario</th><th>Detección</th><th>Respuesta</th><th>Tiempo de Recuperación</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><strong>🔴 Caída del sitio web</strong></td>
+        <td>Monitoreo automático cada 60 segundos</td>
+        <td>Alerta inmediata → Failover automático a servidor backup. Aviso en redes si &gt;1 hora.</td>
+        <td><strong>Máx. 2 horas</strong></td>
+      </tr>
+      <tr>
+        <td><strong>🔴 Brecha de seguridad / datos comprometidos</strong></td>
+        <td>WAF + monitoreo de anomalías</td>
+        <td>Aislar sistema → Notificar doctor + equipo legal → Investigar alcance → Preservar evidencia → Notificar pacientes (&lt;72h) → Reportar a INAI</td>
+        <td><strong>Según alcance</strong></td>
+      </tr>
+      <tr>
+        <td><strong>🟡 Falla en sistema de citas</strong></td>
+        <td>Alertas de error en API</td>
+        <td>Backup: agendamiento manual por WhatsApp/teléfono. Notificar pacientes con citas próximas. Restaurar desde último backup.</td>
+        <td><strong>Máx. 4 horas</strong></td>
+      </tr>
+      <tr>
+        <td><strong>🟡 Chatbot da información incorrecta</strong></td>
+        <td>Feedback del usuario ("¿Fue útil?")</td>
+        <td>Revisión manual de conversaciones flaggeadas → Corrección en base de conocimiento (&lt;24h). Disclaimer permanente protege legalmente.</td>
+        <td><strong>&lt;24 horas</strong></td>
+      </tr>
+      <tr>
+        <td><strong>🟠 Crisis de reputación en redes</strong></td>
+        <td>Social listening + alertas</td>
+        <td>No eliminar comentarios → Responder profesionalmente &lt;2h → Llevar a privado → Documentar → Si grave: comunicado público. Equipo de crisis: Doctor + CM + Legal.</td>
+        <td><strong>&lt;2 horas (respuesta inicial)</strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!-- 10. PRÓXIMOS PASOS (VERSIÓN EXPANDIDA) -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <h1 class="section-title">10. Próximos Pasos — Ruta de Acción Inmediata</h1>
+
+  <table>
+    <thead><tr><th style="width:50px;">Paso</th><th>Acción</th><th>Responsable</th><th>Tiempo</th></tr></thead>
+    <tbody>
+      <tr>
+        <td style="text-align:center;font-size:1.5rem;font-weight:700;color:var(--primary);">1</td>
+        <td>
+          <strong>Reunión de Presentación</strong>
+          <ul style="margin-bottom:0;">
+            <li>Presentación detallada de esta propuesta</li>
+            <li>Sesión de preguntas y respuestas</li>
+            <li>Identificar prioridades del doctor</li>
+            <li>Confirmación de alcance Enterprise y fases prioritarias</li>
+            <li>Definir fecha tentativa de inicio</li>
+          </ul>
+        </td>
+        <td>Omar Flores + Dr. Mendoza</td>
+        <td><strong>Semana 1</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;font-size:1.5rem;font-weight:700;color:var(--primary);">2</td>
+        <td>
+          <strong>Discovery y Briefing</strong>
+          <ul style="margin-bottom:0;">
+            <li>Cuestionario estratégico detallado (historia, valores, público, competidores, precios, objetivos)</li>
+            <li>Visita al consultorio (espacio físico, flujo del paciente, equipo tecnológico)</li>
+            <li>Entrevista con asistente/recepcionista (flujo actual, pain points, preguntas frecuentes)</li>
+          </ul>
+        </td>
+        <td>Omar Flores + Dr. Mendoza + Asistente</td>
+        <td><strong>Semana 2</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;font-size:1.5rem;font-weight:700;color:var(--primary);">3</td>
+        <td>
+          <strong>Propuesta Final y Contrato</strong>
+          <ul style="margin-bottom:0;">
+            <li>Propuesta comercial ajustada y personalizada</li>
+            <li>Alcance con entregables específicos</li>
+            <li>Cronograma final aprobado</li>
+            <li>Cotización final con desglose</li>
+            <li>Firma de contrato + NDA</li>
+            <li>Primer pago (40% del setup)</li>
+          </ul>
+        </td>
+        <td>Ambas partes</td>
+        <td><strong>Semana 2-3</strong></td>
+      </tr>
+      <tr>
+        <td style="text-align:center;font-size:1.5rem;font-weight:700;color:var(--primary);">4</td>
+        <td>
+          <strong>Kickoff Oficial del Proyecto</strong>
+          <ul style="margin-bottom:0;">
+            <li>Reunión de arranque con todo el equipo</li>
+            <li>Asignación de responsables por módulo</li>
+            <li>Configuración de herramientas (Slack/WhatsApp, Trello/Notion, Google Drive, Figma)</li>
+            <li>Calendario de reuniones: Semanal (30 min), Quincenal (60 min), Mensual (90 min)</li>
+            <li><strong>Inicio de Fase 1</strong></li>
+          </ul>
+        </td>
+        <td>Omar Flores + equipo operativo</td>
+        <td><strong>Semana 3</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Equipo Operativo Coordinado</h2>
+
+  <div class="accent-box">
+    <p>El proyecto se coordina bajo dirección de Omar Flores y activa especialistas según la fase: estrategia, marca, contenido, desarrollo, IA y analítica. Esto permite mantener una operación flexible sin cargar al cliente con una estructura innecesaria.</p>
+  </div>
+
+  <table>
+    <thead><tr><th>Rol</th><th>Función Principal</th></tr></thead>
+    <tbody>
+      <tr><td><strong>👤 Director de Proyecto / Consultor Estratégico</strong></td><td>Coordinación general, estrategia, reportes</td></tr>
+      <tr><td><strong>🎨 Director Creativo / Diseñador Senior</strong></td><td>Marca, identidad visual, UX/UI</td></tr>
+      <tr><td><strong>📱 Community Manager / Content Strategist</strong></td><td>Redes sociales, calendario editorial, engagement, métricas</td></tr>
+      <tr><td><strong>🎬 Videógrafo / Editor de Video</strong></td><td>Producción, edición, motion graphics</td></tr>
+      <tr><td><strong>💻 Desarrollador Full Stack Senior</strong></td><td>Website, portal SaaS, integraciones</td></tr>
+      <tr><td><strong>🤖 Ingeniero de IA / ML</strong></td><td>Chat RAG, NLP, base de conocimiento</td></tr>
+      <tr><td><strong>📝 Copywriter / Especialista SEO</strong></td><td>Blog, textos web, SEO técnico y de contenido</td></tr>
+      <tr><td><strong>📊 Analista de Marketing Digital</strong></td><td>Ads, analytics, reportes de ROI, CRO</td></tr>
+      <tr><td><strong>📸 Fotógrafo Profesional</strong> (freelance)</td><td>Sesiones de branding</td></tr>
+    </tbody>
+  </table>
+
+  <div class="accent-box">
+    <strong>Del lado del cliente:</strong>
+    <ul style="margin-top:0.5rem; margin-bottom:0;">
+      <li><strong>👨‍⚕️ Doctor:</strong> Aprobador final, voz de marca, grabación de videos</li>
+      <li><strong>👩‍💼 Asistente:</strong> Punto de contacto operativo, feedback diario</li>
+      <li><strong>📋 Tiempo requerido del doctor:</strong> ~3-5 horas/semana (mayor al inicio, se reduce con el tiempo)</li>
+    </ul>
+  </div>
+
+  <h2>Garantía de Satisfacción</h2>
+
+  <div style="background:linear-gradient(135deg, #f8f4ff 0%, #e8faf8 100%); border:2px solid var(--primary); border-radius:12px; padding:1.5rem; margin:1.5rem 0;">
+    <h3 style="text-align:center; color:var(--primary); margin-top:0;">🛡️ Nuestra Garantía</h3>
+    <table style="margin-bottom:0;">
+      <tbody>
+        <tr>
+          <td style="width:30px;vertical-align:top;">✅</td>
+          <td><strong>Garantía de satisfacción en diseño de marca:</strong> Si no está 100% satisfecho después de 2 rondas de revisión, haremos una 3ra ronda sin costo adicional.</td>
+        </tr>
+        <tr>
+          <td style="vertical-align:top;">✅</td>
+          <td><strong>Garantía técnica de 90 días:</strong> Cualquier bug o fallo técnico posterior a la entrega será corregido sin costo durante 90 días.</td>
+        </tr>
+        <tr>
+          <td style="vertical-align:top;">✅</td>
+          <td><strong>Compromiso de mejora continua:</strong> Si al mes 6 los KPIs muestran desviación relevante frente al plan aprobado, realizaremos una auditoría completa y ajuste de estrategia sin costo adicional.</td>
+        </tr>
+        <tr>
+          <td style="vertical-align:top;">✅</td>
+          <td><strong>Portabilidad garantizada:</strong> Si decide no continuar, le entregamos TODO: código fuente, accesos, bases de datos, contenido, documentación técnica completa.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- ANEXOS -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <h1 class="section-title">11. Anexos</h1>
+
+  <!-- ANEXO A -->
+  <h2>Anexo A: Checklist de Materiales Requeridos del Doctor</h2>
+
+  <h3>📋 Información Personal y Profesional</h3>
+  <table>
+    <thead><tr><th style="width:30px;">☐</th><th>Material</th></tr></thead>
+    <tbody>
+      <tr><td>☐</td><td>CV médico actualizado</td></tr>
+      <tr><td>☐</td><td>Cédula profesional (imagen)</td></tr>
+      <tr><td>☐</td><td>Certificaciones y diplomas (imágenes)</td></tr>
+      <tr><td>☐</td><td>Membresías de sociedades médicas</td></tr>
+      <tr><td>☐</td><td>Foto actual de alta resolución (temporal, hasta la sesión)</td></tr>
+      <tr><td>☐</td><td>Biografía escrita o puntos clave de su trayectoria</td></tr>
+      <tr><td>☐</td><td>Misión/visión personal (o ideas para desarrollarla)</td></tr>
+      <tr><td>☐</td><td>Lista completa de servicios con descripción</td></tr>
+      <tr><td>☐</td><td>Lista de precios actualizada</td></tr>
+      <tr><td>☐</td><td>Seguros médicos con los que trabaja</td></tr>
+      <tr><td>☐</td><td>Horarios de atención</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🏥 Información del Consultorio</h3>
+  <table>
+    <thead><tr><th style="width:30px;">☐</th><th>Material</th></tr></thead>
+    <tbody>
+      <tr><td>☐</td><td>Dirección completa</td></tr>
+      <tr><td>☐</td><td>Teléfonos de contacto</td></tr>
+      <tr><td>☐</td><td>Fotos actuales del consultorio (temporal)</td></tr>
+      <tr><td>☐</td><td>Logo actual (si existe)</td></tr>
+      <tr><td>☐</td><td>Material de marca existente (tarjetas, recetas, etc.)</td></tr>
+      <tr><td>☐</td><td>RFC y datos fiscales (para facturación)</td></tr>
+      <tr><td>☐</td><td>Datos del registrador de dominio (si tiene web actual)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🎬 Información para Contenido</h3>
+  <table>
+    <thead><tr><th style="width:30px;">☐</th><th>Material</th></tr></thead>
+    <tbody>
+      <tr><td>☐</td><td>Lista de 20 preguntas frecuentes de sus pacientes</td></tr>
+      <tr><td>☐</td><td>Temas que le apasiona comunicar</td></tr>
+      <tr><td>☐</td><td>Casos de éxito memorables (anónimos)</td></tr>
+      <tr><td>☐</td><td>Preferencias de tono y estilo</td></tr>
+      <tr><td>☐</td><td>Médicos/cuentas que admira en redes sociales</td></tr>
+      <tr><td>☐</td><td>Temas que NO quiere tocar o que son sensibles</td></tr>
+      <tr><td>☐</td><td>Disponibilidad para sesiones de grabación de video</td></tr>
+    </tbody>
+  </table>
+
+  <h3>🔑 Accesos Necesarios</h3>
+  <table>
+    <thead><tr><th style="width:30px;">☐</th><th>Acceso</th></tr></thead>
+    <tbody>
+      <tr><td>☐</td><td>Email profesional (o crear uno nuevo)</td></tr>
+      <tr><td>☐</td><td>Cuentas de redes sociales existentes (o crear nuevas)</td></tr>
+      <tr><td>☐</td><td>Google Business Profile (si existe)</td></tr>
+      <tr><td>☐</td><td>Doctoralia / directorios existentes</td></tr>
+      <tr><td>☐</td><td>Dominio web (si tiene uno reservado)</td></tr>
+      <tr><td>☐</td><td>Software actual que use (agenda, expediente, etc.)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ANEXO B -->
+<div class="container page-break">
+  <h2>Anexo B: Glosario de Términos Técnicos</h2>
+
+  <table>
+    <thead><tr><th>Término</th><th>Definición</th></tr></thead>
+    <tbody>
+      <tr><td><strong>RAG</strong></td><td>Retrieval-Augmented Generation. Técnica de IA que combina búsqueda en base de datos con generación de texto para dar respuestas precisas y contextualizadas.</td></tr>
+      <tr><td><strong>SaaS</strong></td><td>Software as a Service. Plataforma de software accesible desde internet mediante suscripción, sin necesidad de instalar nada.</td></tr>
+      <tr><td><strong>SEO</strong></td><td>Search Engine Optimization. Conjunto de técnicas para posicionar un sitio web en los primeros resultados de Google.</td></tr>
+      <tr><td><strong>SEO Local</strong></td><td>Estrategia de SEO enfocada en aparecer en búsquedas geográficas ("ginecólogo cerca de mí").</td></tr>
+      <tr><td><strong>CTA</strong></td><td>Call to Action. Botón o texto que invita al usuario a realizar una acción (agendar cita, llamar, etc.).</td></tr>
+      <tr><td><strong>KPI</strong></td><td>Key Performance Indicator. Indicador clave que mide el éxito de una estrategia o acción.</td></tr>
+      <tr><td><strong>ROI</strong></td><td>Return on Investment. Retorno sobre la inversión realizada.</td></tr>
+      <tr><td><strong>ROAS</strong></td><td>Return on Ad Spend. Retorno específico sobre la inversión en publicidad.</td></tr>
+      <tr><td><strong>NPS</strong></td><td>Net Promoter Score. Métrica que mide la probabilidad de que un paciente recomiende el servicio.</td></tr>
+      <tr><td><strong>PWA</strong></td><td>Progressive Web App. Aplicación web que funciona como app nativa en el celular sin necesidad de descarga.</td></tr>
+      <tr><td><strong>CRM</strong></td><td>Customer Relationship Management. Sistema de gestión de relaciones con pacientes.</td></tr>
+      <tr><td><strong>LFPDPPP</strong></td><td>Ley Federal de Protección de Datos Personales en Posesión de Particulares (México).</td></tr>
+      <tr><td><strong>ARCO</strong></td><td>Derechos de Acceso, Rectificación, Cancelación y Oposición de datos personales.</td></tr>
+      <tr><td><strong>NDA</strong></td><td>Non-Disclosure Agreement. Acuerdo de confidencialidad entre las partes.</td></tr>
+      <tr><td><strong>API</strong></td><td>Application Programming Interface. Interfaz que permite que diferentes sistemas se comuniquen entre sí.</td></tr>
+      <tr><td><strong>SSL/TLS</strong></td><td>Protocolos de seguridad que encriptan la comunicación entre el navegador y el servidor.</td></tr>
+      <tr><td><strong>CDN</strong></td><td>Content Delivery Network. Red de servidores que acelera la carga del sitio web a nivel mundial.</td></tr>
+      <tr><td><strong>Schema Markup</strong></td><td>Código que ayuda a Google a entender mejor el contenido de un sitio y mostrar resultados enriquecidos.</td></tr>
+      <tr><td><strong>Core Web Vitals</strong></td><td>Métricas de Google que miden la experiencia del usuario (velocidad, interactividad, estabilidad visual).</td></tr>
+      <tr><td><strong>Engagement</strong></td><td>Nivel de interacción de la audiencia con el contenido (likes, comentarios, shares, saves).</td></tr>
+      <tr><td><strong>Lead Magnet</strong></td><td>Recurso gratuito de valor (e-book, guía) que se ofrece a cambio de datos de contacto.</td></tr>
+      <tr><td><strong>Funnel / Embudo</strong></td><td>Proceso que guía al usuario desde que descubre la marca hasta que se convierte en paciente.</td></tr>
+      <tr><td><strong>A/B Testing</strong></td><td>Prueba comparativa entre dos versiones de un elemento para determinar cuál funciona mejor.</td></tr>
+      <tr><td><strong>Retargeting</strong></td><td>Estrategia de publicidad que muestra anuncios a personas que ya interactuaron con el contenido.</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ANEXO C -->
+<div class="container page-break">
+  <h2>Anexo C: Calendario de Fechas Relevantes para Contenido</h2>
+
+  <table>
+    <thead><tr><th>Mes</th><th>Fechas Clave</th><th>💡 Campaña Sugerida</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Enero</strong></td><td>Propósitos de salud de año nuevo</td><td>"Año nuevo, chequeo nuevo"</td></tr>
+      <tr><td><strong>Febrero</strong></td><td>04 — Día Mundial contra el Cáncer<br>14 — San Valentín → Salud sexual</td><td>Salud sexual responsable</td></tr>
+      <tr><td><strong>Marzo</strong></td><td>08 — Día Internacional de la Mujer<br>26 — Día Mundial Prevención Cáncer Cervicouterino</td><td>Empoderamiento y prevención femenina</td></tr>
+      <tr><td><strong>Abril</strong></td><td>07 — Día Mundial de la Salud<br>Semana de la Salud Materna</td><td>Importancia del control prenatal</td></tr>
+      <tr><td><strong>Mayo</strong></td><td>10 — Día de las Madres (LATAM)<br>28 — Día Int. Acción Salud de las Mujeres<br>Semana endometriosis</td><td>Homenaje a mamás + salud materna</td></tr>
+      <tr><td><strong>Junio</strong></td><td>Mes de la fertilidad</td><td>Fertilidad y planificación familiar</td></tr>
+      <tr><td><strong>Julio</strong></td><td>Mes de concientización sobre fibromas uterinos</td><td>Salud uterina</td></tr>
+      <tr><td><strong>Agosto</strong></td><td>01-07 — Semana Mundial de la Lactancia Materna</td><td>Lactancia y salud postparto</td></tr>
+      <tr><td><strong>Septiembre</strong></td><td>Mes de cáncer de ovario<br>Mes de síndrome de ovario poliquístico</td><td>SOP y salud ovárica</td></tr>
+      <tr><td><strong>Octubre</strong></td><td>🎀 Octubre Rosa — Cáncer de Mama<br>19 — Día Mundial Cáncer de Mama</td><td>Autoexamen de mama + mamografía</td></tr>
+      <tr><td><strong>Noviembre</strong></td><td>Mes de concientización sobre prematuros<br>25 — Día Int. Eliminación Violencia contra la Mujer</td><td>Salud integral + No violencia</td></tr>
+      <tr><td><strong>Diciembre</strong></td><td>01 — Día Mundial Lucha contra el SIDA<br>Cierre de año</td><td>Salud sexual + Resumen del año + Agenda tu chequeo</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ANEXO D -->
+<div class="container page-break">
+  <h2>Anexo D: Modelo de Reporte Mensual</h2>
+
+  <div class="highlight-box">
+    <p>Cada mes se entregará un reporte profesional con la siguiente estructura. El reporte se presenta en reunión mensual de 90 minutos y se comparte en formato PDF y dashboard interactivo.</p>
+  </div>
+
+  <table>
+    <thead><tr><th>#</th><th>Sección del Reporte</th><th>Contenido</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td><strong>Resumen Ejecutivo</strong></td><td>Logros principales, KPIs vs. metas, semáforo general (🟢🟡🔴), highlights y lowlights</td></tr>
+      <tr><td>2</td><td><strong>Redes Sociales</strong></td><td>Métricas por plataforma, seguidores, alcance, engagement rate, top 3 contenido, comparativo mes anterior, insights</td></tr>
+      <tr><td>3</td><td><strong>Website y SEO</strong></td><td>Tráfico total, fuentes, páginas más visitadas, posicionamiento de keywords, artículos publicados, Core Web Vitals</td></tr>
+      <tr><td>4</td><td><strong>Citas y Portal</strong></td><td>Citas totales, online vs. telefónicas, tasa de no-show, registros de pacientes, teleconsultas y pagos procesados</td></tr>
+      <tr><td>5</td><td><strong>Chat Inteligente</strong></td><td>Conversaciones totales, resolución automática, temas consultados, citas desde chat, escalamientos</td></tr>
+      <tr><td>6</td><td><strong>Operación Técnica</strong></td><td>Uptime, errores, consumo de APIs, automatizaciones activas, incidencias y mejoras planificadas</td></tr>
+      <tr><td>7</td><td><strong>Publicidad Digital</strong></td><td>Inversión por canal, impresiones, clicks, CTR, CPC, CPL, conversiones, ROAS, optimizaciones</td></tr>
+      <tr><td>8</td><td><strong>Finanzas</strong></td><td>Ingresos atribuidos a digital, costo de operación, ROI del mes, proyección siguiente mes</td></tr>
+      <tr><td>9</td><td><strong>Plan del Próximo Mes</strong></td><td>Prioridades, contenido planificado, mejoras técnicas, campañas a lanzar, fechas clave</td></tr>
+      <tr><td>10</td><td><strong>Anexos</strong></td><td>Screenshots de métricas, capturas de contenido destacado, datos tabulados exportables</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============================================================ -->
+<!-- CIERRE FINAL DE LA PROPUESTA -->
+<!-- ============================================================ -->
+<div class="container page-break">
+  <div style="text-align:center; padding:3rem 2rem; background:linear-gradient(135deg, var(--primary) 0%, #3d2f6e 100%); border-radius:16px; color:var(--white); margin:2rem 0;">
+    <h1 style="font-family:'Playfair Display',serif; font-size:1.8rem; color:var(--white); border:none; margin:0 0 1rem;">💜 Nota Final</h1>
+    <p style="max-width:650px; margin:0 auto 1.2rem; text-align:center; line-height:1.8; color:rgba(255,255,255,0.9);">
+      Estimado Dr. Mendoza:
+    </p>
+    <p style="max-width:650px; margin:0 auto 1.2rem; text-align:center; line-height:1.8; color:rgba(255,255,255,0.9);">
+      Esta propuesta representa mucho más que un conjunto de herramientas digitales. Es un <strong style="color:var(--white);">ecosistema diseñado para amplificar el impacto de su vocación médica</strong>, permitiéndole llegar a más mujeres que necesitan atención ginecológica de calidad, confianza y calidez.
+    </p>
+    <p style="max-width:650px; margin:0 auto 1.2rem; text-align:center; line-height:1.8; color:rgba(255,255,255,0.9);">
+      En un mundo donde el 77% de las pacientes buscan a su médico en internet antes de llamar, <strong style="color:var(--white);">no tener presencia digital ya no es una opción</strong>: es una barrera invisible entre usted y las pacientes que lo necesitan.
+    </p>
+    <p style="max-width:650px; margin:0 auto 1.5rem; text-align:center; line-height:1.8; color:rgba(255,255,255,0.9);">
+      Cada módulo está diseñado para trabajar en armonía, creando un ciclo virtuoso:
+    </p>
+    <p style="max-width:650px; margin:0 auto 2rem; text-align:center; font-size:1rem; line-height:1.9; color:var(--secondary);">
+      <em>Contenido que educa → Confianza que atrae → Tecnología que facilita → Experiencia que fideliza → Pacientes que recomiendan → Más mujeres con acceso a la salud que merecen.</em>
+    </p>
+    <p style="font-size:1.1rem; margin:0;">
+      <strong style="color:var(--white);">Estamos listos para comenzar cuando usted lo esté. 🚀</strong>
+    </p>
+  </div>
+
+  <!-- CONTACTO -->
+  <div style="text-align:center; margin-top:2.5rem; padding:2rem; background:var(--light); border-radius:12px; border:1px solid #e0dce8;">
+    <h2 style="color:var(--primary); margin-top:0;">📞 Contacto Directo</h2>
+    <p style="font-size:1.15rem; margin-bottom:0.5rem;"><strong>Omar Flores</strong></p>
+    <p style="margin-bottom:0.3rem;">Consultoría en Transformación Digital — Sector Salud</p>
+    <p style="margin-bottom:0.3rem;">🌐 <a href="https://omarflores.dev" style="color:var(--accent); text-decoration:none; font-weight:600;">omarflores.dev</a></p>
+    <p style="margin-bottom:0.3rem;">📧 hello@omarflores.dev</p>
+    <p style="color:#999; font-size:0.85rem; margin-top:1rem;">Estoy disponible para resolver cualquier duda sobre esta propuesta.</p>
+  </div>
+
+  <!-- FIRMA -->
+  <div class="signature-block">
+    <div class="sig">
+      <div class="sig-line"></div>
+      <p class="sig-name">Omar Flores</p>
+      <p class="sig-title">Consultor en Transformación Digital</p>
+      <p class="sig-title"><a href="https://omarflores.dev" style="color:var(--accent); text-decoration:none;">omarflores.dev</a></p>
+    </div>
+    <div class="sig">
+      <div class="sig-line"></div>
+      <p class="sig-name">Dr. Eduardo Mendoza Ramírez</p>
+      <p class="sig-title">Médico Ginecólogo</p>
+      <p class="sig-title">Fecha: ___________________</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================ -->
+<!-- FOOTER FINAL -->
+<!-- ============================================================ -->
+<div class="doc-footer">
+  <p><strong>DOCUMENTO CONFIDENCIAL</strong></p>
+  <p>Propuesta Comercial de Transformación Digital Integral — Versión 1.0 · Abril 2026</p>
+  <p>Preparado por Omar Flores · <a href="https://omarflores.dev" style="color:var(--accent);">omarflores.dev</a></p>
+  <p style="margin-top:0.5rem;">Este documento contiene información confidencial y propietaria. Queda prohibida su reproducción, distribución o divulgación sin autorización expresa de Omar Flores.</p>
+  <p style="margin-top:1rem;">© 2026 Omar Flores — Todos los derechos reservados.</p>
+</div>
+
+</body>
+</html>
